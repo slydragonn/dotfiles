@@ -1,4 +1,10 @@
-require("kanagawa").setup({
+local status, kanagawa = pcall(require, "kanagawa")
+
+if not status then
+	return
+end
+
+kanagawa.setup({
 	undercurl = true, -- enable undercurls
 	commentStyle = { italic = true },
 	functionStyle = {},

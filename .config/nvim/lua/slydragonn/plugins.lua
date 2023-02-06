@@ -1,4 +1,4 @@
--- Automatically run: PackerCompile whenever plugins.lua is updated with an autocommand:
+-- Automatically run: PackerCompile
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = vim.api.nvim_create_augroup("PACKER", { clear = true }),
 	pattern = "plugins.lua",
@@ -8,6 +8,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 return require("packer").startup(function(use)
 	-- Packer
 	use("wbthomason/packer.nvim")
+
+	-- Common utilities
+	use("nvim-lua/plenary.nvim")
+
+	-- Icons
+	use("nvim-tree/nvim-web-devicons")
 
 	-- Colorschema
 	use("rebelot/kanagawa.nvim")
@@ -22,8 +28,25 @@ return require("packer").startup(function(use)
 		requires = { "nvim-web-devicons" },
 	})
 
-	-- Common utilities
-	use("nvim-lua/plenary.nvim")
+	-- Treesitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
+		config = function()
+			require("slydragonn.configs.treesitter")
+		end,
+	})
+
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
+
+	-- Telescope
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.1",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
 	-- LSP
 	use({
@@ -33,62 +56,9 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
-	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require("slydragonn.configs.null-ls")
-		end,
-		requires = { "nvim-lua/plenary.nvim" },
-	})
-
-	use({
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	})
-
-	use({
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				automatic_installation = true,
-			})
-		end,
-	})
-
-	-- File manager
-	use({
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-	})
-
-	use("norcalli/nvim-colorizer.lua")
-
-	-- Icons
-	use("nvim-tree/nvim-web-devicons")
-
-	-- Treesitter
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		event = "CursorHold",
-		run = ":TSUpdate",
-		config = function()
-			require("slydragonn.configs.treesitter")
-		end,
-	})
-
-	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
-
 	use("onsails/lspkind-nvim")
 
-	-- cmp
+	-- cmp: Autocomplete
 	use({
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -103,12 +73,43 @@ return require("packer").startup(function(use)
 
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 
-	-- Telescope
+	-- LSP diagnostics, code actions, and more via Lua.
 	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("slydragonn.configs.null-ls")
+		end,
+		requires = { "nvim-lua/plenary.nvim" },
 	})
+
+	-- Mason: Portable package manager
+	use({
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	})
+
+	use({
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("slydragonn.configs.mason-lsp")
+		end,
+	})
+
+	-- File manager
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+	})
+
+	-- Show colors
+	use("norcalli/nvim-colorizer.lua")
 
 	-- Terminal
 	use({
