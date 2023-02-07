@@ -1,11 +1,10 @@
 # Slydragonn's dotfiles
 
 ## Configs
-
 - Neovim
 - Powershell
 
-### ⚙ Requeriments
+## ⚙ Requirements
 
 
 * __Neovim:__
@@ -18,13 +17,13 @@
   * [Oh My Posh](https://ohmyposh.dev/docs/installation/windows)
 
 
-### ✨ Features
+## ✨ Features
 
 * __Neovim:__
   * [packer](https://github.com/wbthomason/packer.nvim): Plugin Manager.
    * [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim): File explorer.
   * [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons): Icons for Neovim.
-  * [kanagawa](https://github.com/rebelot/kanagawa.nvim): Colorscheme.
+  * [kanagawa](https://github.com/rebelot/kanagawa.nvim): Color scheme.
   * [lualine](https://github.com/nvim-lualine/lualine.nvim): Statusline
   * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): Treesitter configurations and abstraction layer.
   * [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag): Auto close and auto rename html tag.
@@ -39,7 +38,7 @@
   * [markdown-preview](https://github.com/iamcco/markdown-preview.nvim): Markdown preview plugin.
   * [nvim-autopairs](https://github.com/windwp/nvim-autopairs): Powerful autopair plugin.
 
-### 🚀 Installation
+## 🚀 Installation
 
 Clone the repository.
 
