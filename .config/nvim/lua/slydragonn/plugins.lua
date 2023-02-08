@@ -109,7 +109,12 @@ return require("packer").startup(function(use)
 	})
 
 	-- Show colors
-	use("norcalli/nvim-colorizer.lua")
+	use({
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({ "*" })
+		end,
+	})
 
 	-- Terminal
 	use({
