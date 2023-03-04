@@ -1,7 +1,7 @@
 local global = vim.g
 local o = vim.o
 
--- Map <leader>
+-- Map <leader> = the space key
 
 global.mapleader = " "
 global.maplocalleader = " "

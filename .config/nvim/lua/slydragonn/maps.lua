@@ -15,6 +15,8 @@ else
 	print("Telescope not found")
 end
 
+-- <leader> = the space key
+
 -- Save
 map("n", "<leader>w", "<CMD>update<CR>")
 

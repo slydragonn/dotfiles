@@ -100,6 +100,7 @@ return require("packer").startup(function(use)
 		config = function()
 			require("slydragonn.configs.mason-lsp")
 		end,
+		after = "mason.nvim",
 	})
 
 	-- File manager
