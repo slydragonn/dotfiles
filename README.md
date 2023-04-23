@@ -7,6 +7,11 @@
 - Neovim
 - Powershell
 
+## 📚 Articles
+
+- [How to Set up the Windows terminal with Powershell and Oh My Posh](https://dev.to/slydragonn/how-to-set-up-the-windows-terminal-with-powershell-and-oh-my-posh-2ba4)
+- [How to Set up Neovim for Windows and Linux with Lua and Packer](https://dev.to/slydragonn/how-to-set-up-neovim-for-windows-and-linux-with-lua-and-packer-2391)
+
 ## ⚙ Requirements
 
 - **Neovim:**
